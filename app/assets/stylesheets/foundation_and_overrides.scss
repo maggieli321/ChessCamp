@@ -217,7 +217,7 @@ $success-color: #B5EBC9;
 // $include-html-accordion-classes: $include-html-classes;
 
 // $accordion-navigation-padding: rem-calc(16);
-// $accordion-navigation-bg-color: #efefef  ;
+// $accordion-navigation-bg-color: #efefef ;
 // $accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%);
 // $accordion-navigation-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -3%);
 // $accordion-navigation-font-color: #222;
@@ -412,7 +412,7 @@ $button-margin-bottom: rem-calc(0);
 // $f-dropdown-font-size: rem-calc(14);
 // $f-dropdown-list-padding: rem-calc(5, 10);
 // $f-dropdown-line-height: rem-calc(18);
-// $f-dropdown-list-hover-bg: #eeeeee  ;
+// $f-dropdown-list-hover-bg: #eeeeee ;
 // $dropdown-mobile-default-float: 0;
 
 // We use this to control the styles for when the dropdown has custom content.
@@ -801,7 +801,7 @@ $panel-bg: scale-color(#B5E7F5, $lightness: 50%);
 // $price-title-font-family: $body-font-family;
 
 // We use these to control the price styles
-// $price-money-bg: #f6f6f6  ;
+// $price-money-bg: #f6f6f6 ;
 // $price-money-padding: rem-calc(15 20);
 // $price-money-align: center;
 // $price-money-color: #333;
@@ -839,7 +839,7 @@ $panel-bg: scale-color(#B5E7F5, $lightness: 50%);
 
 // We use this to se the prog bar height
 // $progress-bar-height: rem-calc(25);
-// $progress-bar-color: #f6f6f6  ;
+// $progress-bar-color: #f6f6f6 ;
 
 // We use these to control the border styles
 // $progress-bar-border-color: scale-color(#fff, $lightness: -20%);
@@ -1037,7 +1037,7 @@ $table-border-style: none;
 // $table-border-color: #ddd;
 
 // These control the table head styles
-// $table-head-bg: #f5f5f5  ;
+// $table-head-bg: #f5f5f5 ;
 // $table-head-font-size: rem-calc(14);
 // $table-head-font-color: #222;
 // $table-head-font-weight: bold;
@@ -1060,7 +1060,7 @@ $table-margin-bottom: rem-calc(25);
 // $include-html-tabs-classes: $include-html-classes;
 
 // $tabs-navigation-padding: rem-calc(16);
-// $tabs-navigation-bg-color: #efefef  ;
+// $tabs-navigation-bg-color: #efefef ;
 // $tabs-navigation-active-bg-color: #fff;
 // $tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%);
 // $tabs-navigation-font-color: #222;
@@ -1180,7 +1180,7 @@ $topbar-link-bg-hover: #FAF2F0;
 // $topbar-media-query: "only screen and (min-width: #{upper-bound($medium-range)})";
 
 // Divider Styles
-// $topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: 13%);
+// $topbar-divider-border-bottom: solid 1px scale-color($topbar-bg-color, $lightness: 13%);
 // $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
 
 // Sticky Class

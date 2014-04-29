@@ -1,5 +1,6 @@
 class CampsController < ApplicationController
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
 
   def index
     @upcoming_camps = Camp.upcoming.active.chronological.paginate(:page => params[:page]).per_page(10)
@@ -16,6 +17,18 @@ class CampsController < ApplicationController
   end
 
   def edit
+    # Handle shortcut deactivations
+    unless params[:status].nil?
+      if params[:status].match(/deactivate/) # == 'deactivate_prj' || params[:status] == 'deactivate_asgn'
+        @camp.update_attribute(:active, false)
+        flash[:notice] = "#{@camp.curriculum.name} was made inactive."
+      elsif params[:status].match(/activate/) # == 'activate_prj' || params[:status] == 'activate_asgn'
+        @camp.update_attribute(:active, true)
+        flash[:notice] = "#{@camp.curriculum.name} was made active."
+      end
+      redirect_to curriculums_path(@camp.curriculum) if params[:status].match(/_curr/)
+      redirect_to camp_path if params[:status].match(/_camp/)
+    end
   end
 
   def create
@@ -46,6 +59,6 @@ class CampsController < ApplicationController
     end
 
     def camp_params
-      params.require(:camp).permit(:curriculum_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active, :instructor_ids => [])
+      params.require(:camp).permit(:location_id, :curriculum_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active, :instructor_ids => [])
     end
 end
