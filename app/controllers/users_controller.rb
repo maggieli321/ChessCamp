@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
   	if @user.update(user_params)
-      redirect_to @user, notice: "user was revised in the system."
+      redirect_to @user, notice: "User was revised in the system."
     else
       render action: 'edit'
     end
