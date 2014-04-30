@@ -2,6 +2,20 @@
 <strong>Name:&nbsp;&nbsp;</strong> 
   <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
 
+<strong>Camp Rating:&nbsp;&nbsp;</strong> 
+  <%= @camp.curriculum.min_rating.zero? ? "Unrated" : @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %><br /><br />
+
+<strong>Registrations&nbsp;</strong> 
+  (<%= "#{@camp.registrations.size}" %>)<br /><br />
+
+<strong>Students:&nbsp;&nbsp;<br /></strong> 
+  <% @camp.students.each do |a| %>
+    <%= a.name %>: <%= a.rating %><br />
+  <%  end  %><br /><br />
+
+<strong>Rating:&nbsp;&nbsp;</strong> 
+  <%= @camp.curriculum.min_rating.zero? ? "Unrated" : @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %><br /><br />
+
 <strong>Cost:&nbsp;&nbsp;</strong> 
   <%= number_to_currency(@camp.cost) %><br /><br />
 

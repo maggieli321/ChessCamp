@@ -6,8 +6,14 @@
   <%= @student.age %><br /><br />
 
 <strong>Age:&nbsp;&nbsp;</strong> 
-  <%= @student.date_of_birth.strftime('%m/%d/%Y') %><br /><br />
+  <%= @student.age %><br /><br />
 
+<strong>Camp:&nbsp;&nbsp;</strong> 
+  <% @student.camps.each do |c| %>
+  	<%= c.name %>: <%= c.start_date.strftime('%m/%d/%y') %>
+  <% end %><br /><br />
+<!--   <%#= @student.date_of_birth.strftime('%m/%d/%Y') %><br /><br />
+ -->
 <strong>Rating:&nbsp;&nbsp;</strong> 
   <%= @student.rating.zero? ? "Unrated" : @student.rating %><br /><br />
 
