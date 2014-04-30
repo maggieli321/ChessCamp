@@ -15,6 +15,8 @@ class InstructorsController < ApplicationController
 
   def new
     @instructor = Instructor.new
+    # @instructor.user.build_user
+    @instructor.build_user
   end
 
   def edit
@@ -50,6 +52,7 @@ class InstructorsController < ApplicationController
     end
 
     def instructor_params
-      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active)
+      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active#, user_attributes: [:username, :instructor_id, :role, :password, :password_confirmation]
+        )
     end
 end

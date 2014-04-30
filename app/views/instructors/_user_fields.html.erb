@@ -1,0 +1,14 @@
+  <div class="fields">
+    <div class="user_field">
+      <!-- x icon to remove -->
+      <%= f.link_to_remove("x") %>
+      <!-- fields -->
+      <%= f.input :username %>
+      <%= f.password_field :password %>
+      <%= f.password_field :password_confirmation %>
+      <%= f.select :role, User::ROLES, :prompt => "Select ..." %>
+      <%= f.collection_select :instructor_id, Instructor.all, :id, :name, :prompt => "Choose..." %>
+
+
+    </div>
+  </div>

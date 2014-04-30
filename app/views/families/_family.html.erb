@@ -1,0 +1,28 @@
+<h3><%= status %> Families</h3>
+
+<table class="table">
+  <tr>
+    <th width="200">Family Name</th>
+    <th width="200">Parent First Name</th>
+    <th width="100">Email</th>
+    <th width="100">Phone</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% families.each do |family| %>
+  <tr>
+    <td><%= link_to family.family_name, family_path(family) %></td>
+    <td align="center"><%= family.family_name %></td>
+    <td align="center"><%= family.parent_first_name %></td>
+    <td align="center"><%= family.email %></td>
+    <td align="center"><%= number_to_phone family.phone %></td>
+
+
+  </tr>
+<% end %>
+</table>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

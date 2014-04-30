@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  before_action :check_login, only: [:edit, :update, :destroy]
 
 
   def new
-  	@user = current_user
+  	@user = User.new
   end
 
   def edit
@@ -10,16 +11,19 @@ class UsersController < ApplicationController
   end
 
   def create
-  	session[:user_id] = @user.id
-    redirect_to(@home, :notice => 'User was successfully created.')  	
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to(@home, :notice => 'User was successfully created.')  	
   end
 
   def update
-  	# if @user.update(user_params)
-   #    redirect_to @user, notice: "user was revised in the system."
-   #  else
-   #    render action: 'edit'
-   #  end
+    @user = current_user
+  	if @user.update(user_params)
+      redirect_to @user, notice: "user was revised in the system."
+    else
+      render action: 'edit'
+    end
   end
 
   private

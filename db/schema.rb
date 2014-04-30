@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413183432) do
+ActiveRecord::Schema.define(version: 20140430020130) do
 
   create_table "camp_instructors", force: true do |t|
     t.integer "camp_id"
@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 20140413183432) do
   create_table "users", force: true do |t|
     t.string  "username"
     t.string  "password_digest"
+    t.string  "role",            default: "instructor"
     t.integer "instructor_id"
-    t.string  "role"
     t.boolean "active",          default: true
   end
 

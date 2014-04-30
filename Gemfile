@@ -55,6 +55,8 @@ gem 'bcrypt-ruby', '3.1.5'
 
 gem 'cancancan'
 
+gem 'nested_form'
+
 # Additional gems that are very useful in Rails development
 group :development do
   gem 'quiet_assets'
