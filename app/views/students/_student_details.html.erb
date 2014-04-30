@@ -5,8 +5,8 @@
 <strong>Age:&nbsp;&nbsp;</strong> 
   <%= @student.age %><br /><br />
 
-<strong>Age:&nbsp;&nbsp;</strong> 
-  <%= @student.age %><br /><br />
+<strong>Date of Birth:&nbsp;&nbsp;</strong> 
+  <%= @student.date_of_birth.strftime('%m/%d/%Y') %><br /><br />
 
 <strong>Camp:&nbsp;&nbsp;</strong> 
   <% @student.camps.each do |c| %>

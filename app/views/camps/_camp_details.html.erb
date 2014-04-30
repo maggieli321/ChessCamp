@@ -10,7 +10,7 @@
 
 <strong>Students:&nbsp;&nbsp;<br /></strong> 
   <% @camp.students.each do |a| %>
-    <%= a.name %>: <%= a.rating %><br />
+    <%=link_to a.name, student_path(a) %>: <%= a.rating %><br />
   <%  end  %><br /><br />
 
 <strong>Rating:&nbsp;&nbsp;</strong> 
