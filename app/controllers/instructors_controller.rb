@@ -16,6 +16,7 @@ class InstructorsController < ApplicationController
 
   def new
     @instructor = Instructor.new
+    @instructor.build_user
   end
 
   def edit
@@ -34,7 +35,7 @@ class InstructorsController < ApplicationController
 
   def update
     if @instructor.update(instructor_params)
-      redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system"
+      redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system."
     else
       render action: 'edit'
     end
@@ -51,7 +52,7 @@ class InstructorsController < ApplicationController
     end
 
     def instructor_params
-      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active, user_attributes: [:username, :instructor_id, :role, :password, :password_confirmation]
+      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active, users_attributes: [:username, :role, :password, :password_confirmation]
         )
     end
 end

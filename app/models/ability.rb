@@ -12,11 +12,14 @@ class Ability
           instructor.id == user.instructor_id
         end
         can :update, User do |u|  
-        u.id == user.id
+          u.id == user.id
         end
-        # can :destroy, Instructor do |instructor|  
-        #   instructor.id == user.instructor_id
-        # end
+        can :edit, Instructor do |instructor|  
+          instructor.id == user.instructor_id
+        end
+        can :edit, User do |u|  
+          u.id == user.id
+        end
       else
         can :read, :all
     end
