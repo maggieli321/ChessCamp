@@ -94,7 +94,7 @@ class InstructorsController < ApplicationController
         :email, 
         :phone, 
         :active, 
-        user_attributes: [:_destroy, :instructor_id, :username, :role, :password, :password_confirmation, :id]
+        user_attributes: [:instructor_id, :username, :role, :password, :password_confirmation, :id]
         )
     end
 end
