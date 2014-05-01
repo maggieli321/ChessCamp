@@ -11,12 +11,13 @@ class Ability
         can :update, Instructor do |instructor|  
           instructor.id == user.instructor_id
         end
-        can :create, User do |u|  
-          u.id == user.id
-        end
-        # can :create, Student do |s|  
-        #   s.id == student_id
+        # can :create, User do |u|  
+        #   u.id == user.id
         # end
+        can :read, Student do |s|  
+          campstu_ids = user.instructor.camps.map{|c| c.students.map{|i| i.id}}.flatten
+          campstu_ids.include?(s.id)
+        end
         can :update, User do |u|  
           u.id == user.id
         end

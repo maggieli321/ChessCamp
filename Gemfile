@@ -57,6 +57,8 @@ gem 'cancancan'
 
 gem 'nested_form'
 
+gem 'jquery-ui-rails'
+
 # Additional gems that are very useful in Rails development
 group :development do
   gem 'quiet_assets'

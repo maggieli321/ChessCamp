@@ -39,34 +39,8 @@ class InstructorsController < ApplicationController
     end
   end
 
-  # def update
-  #   authorize! :update, @instructor
-  #   puts instructor_params
-  #   if instructor_params[:user_attributes]
-  #     instructor_params[:instructor_id] = @instructor.id
-  #     puts 'got here'
-  #     @user = User.new(instructor_params[:user_attributes].except(:_destroy))
-  #     if @instructor.user
-  #       puts 'update'
-  #       @instructor.user.update(instructor_params[:user_attributes].except(:_destroy))
-  #       redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system."
-  #     elsif @user.save
-  #       puts 'save'
-  #       redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system."
-  #     else
-  #       render action: 'edit'
-  #     end
-  #   elsif @instructor.update(instructor_params)
-  #     redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system."
-  #   else
-  #     render action: 'edit'
-  #   end
-  #   rescue ActionView::MissingTemplate
-  #       redirect_to @instructor
-  # end
 
   def update
-    authorize! :update, @instructor
     if @instructor.update(instructor_params)
       redirect_to @instructor, notice: "The camp #{@instructor.proper_name} was revised in the system."
     else

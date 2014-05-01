@@ -15,10 +15,12 @@
 //= require jquery_nested_form
 //= require foundation
 //= require_tree .
+//= require jquery.ui.all
+// return \\=require jquery.ui.all
+
 
 $(function(){ $(document).foundation(); });
 
-// return \\=require jquery.ui.all
 	$(function() {
 		$(".datepicker").datepicker({
 			format: 'mm/dd/YYYY'
