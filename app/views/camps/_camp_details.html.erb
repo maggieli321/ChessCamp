@@ -8,7 +8,7 @@
 <strong>Registrations&nbsp;</strong> 
   (<%= "#{@camp.registrations.size}" %>)<br /><br />
 
-<strong>Students:&nbsp;&nbsp;<br /></strong> 
+<strong>Students&nbsp;&nbsp;<br /></strong> 
   <% @camp.students.each do |a| %>
     <%=link_to a.name, student_path(a) %>: <%= a.rating %><br />
   <%  end  %><br /><br />
@@ -32,10 +32,11 @@
 <strong>Time:&nbsp;&nbsp;</strong> 
   <%= @camp.time_slot == "am" ? "Morning" : "Afternoon" %><br /><br />
 
-<strong>Active?&nbsp;&nbsp;</strong>
+<strong>Active:&nbsp;&nbsp;</strong>
   <%= @camp.active ? "Yes" : "No" %><br /><br />
 
-
+<strong>Location:&nbsp;&nbsp;</strong>
+  <%= image_tag @camp.create_map_link %><br /><br />
 
 <%= link_to "Edit this camp", edit_camp_path(@camp), class: "button tiny radius" %>&nbsp;&nbsp;
 <%= link_to 'Destroy camp', camp_path(@camp), data: { confirm: 'Are you sure you want to permanently remove this camp from the system?' }, method: :delete, class: "button tiny radius alert" %>

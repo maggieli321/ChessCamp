@@ -66,6 +66,7 @@ class InstructorsController < ApplicationController
   # end
 
   def update
+    authorize! :update, @instructor
     if @instructor.update(instructor_params)
       redirect_to @instructor, notice: "The camp #{@instructor.proper_name} was revised in the system."
     else

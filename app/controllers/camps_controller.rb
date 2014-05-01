@@ -2,7 +2,7 @@ class CampsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
   before_action :check_login
-  authorize_resource
+  # authorize_resource
 
   def index
     @upcoming_camps = Camp.upcoming.active.chronological.paginate(:page => params[:page]).per_page(10)
@@ -15,10 +15,12 @@ class CampsController < ApplicationController
   end
 
   def new
+    authorize! :new, @camp
     @camp = Camp.new
   end
 
   def edit
+    authorize! :new, @camp
     # Handle shortcut deactivations
     unless params[:status].nil?
       if params[:status].match(/deactivate/) # == 'deactivate_prj' || params[:status] == 'deactivate_asgn'

@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :check_login
-  authorize_resource
+  # authorize_resource
 
   def index
     @active_students = Student.active.alphabetical.paginate(:page => params[:page]).per_page(10)
@@ -10,13 +10,16 @@ class StudentsController < ApplicationController
   end
 
   def show
+    authorize! :show, @student
   end
 
   def new
+    authorize! :new, @student
     @student = Student.new
   end
 
   def edit
+     authorize! :edit, @student
   end
 
 
