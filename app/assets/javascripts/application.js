@@ -11,18 +11,19 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require foundation
 //= require_tree .
-//= require jquery.ui.all
-// return \\=require jquery.ui.all
 
+$(document).ready(function() {
+	$(".datepicker").datepicker({
+		dateFormat: 'mm/dd/yy'
+		// altField: "#actualDate"
+	});
+});
 
 $(function(){ $(document).foundation(); });
 
-	$(function() {
-		$(".datepicker").datepicker({
-			format: 'mm/dd/YYYY'
-		});
-	});
+

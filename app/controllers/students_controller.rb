@@ -24,6 +24,9 @@ class StudentsController < ApplicationController
 
 
   def create
+    if student_params["date_of_birth"]
+      student_params["date_of_birth"] = Chronic.parse(student_params["date_of_birth"])
+    end
     @student = Student.new(student_params)
     if @student.save
       redirect_to @student, notice: "#{@student.proper_name} was added to the system"

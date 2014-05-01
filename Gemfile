@@ -59,6 +59,9 @@ gem 'nested_form'
 
 gem 'jquery-ui-rails'
 
+gem 'chronic'
+
+
 # Additional gems that are very useful in Rails development
 group :development do
   gem 'quiet_assets'

@@ -7,7 +7,11 @@
         <%= f.input :last_name %>
         <%= f.input :family_id, collection: Family.active.alphabetical.map { |e| [e.family_name, e.id]  }, prompt: "Select family..." %>
         
-        <%= f.date_field :date_of_birth, label: "Date of Birth"%>
+        <% if !@student.date_of_birth.nil? %>
+          <%= f.input :date_of_birth,  as: :string, input_html: { class: 'datepicker', :value => @student.date_of_birth.strftime('%m/%d/%Y') } %>
+          <% else %>
+          <%= f.input :date_of_birth,  as: :string, input_html: { class: 'datepicker' } %>
+        <% end %>
         
         <%= f.input :rating %>
         <%= f.input :active %>
