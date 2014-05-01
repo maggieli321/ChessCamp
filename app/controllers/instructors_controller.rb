@@ -2,7 +2,7 @@ class InstructorsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
   before_action :check_login
-  authorize_resource
+  # authorize_resource
 
   def index
     @active_instructors = Instructor.active.alphabetical.paginate(:page => params[:page]).per_page(10)
@@ -15,11 +15,17 @@ class InstructorsController < ApplicationController
   end
 
   def new
+    authorize! :new, @instructor
     @instructor = Instructor.new
+    #@instructor.build_user
     @instructor.build_user
   end
 
   def edit
+    authorize! :edit, @instructor
+    if !@instructor.user
+      @instructor.build_user
+    end
     # reformating the phone so it has dashes when displayed for editing (personal taste)
     @instructor.phone = number_to_phone(@instructor.phone)
   end
@@ -33,13 +39,41 @@ class InstructorsController < ApplicationController
     end
   end
 
+  # def update
+  #   authorize! :update, @instructor
+  #   puts instructor_params
+  #   if instructor_params[:user_attributes]
+  #     instructor_params[:instructor_id] = @instructor.id
+  #     puts 'got here'
+  #     @user = User.new(instructor_params[:user_attributes].except(:_destroy))
+  #     if @instructor.user
+  #       puts 'update'
+  #       @instructor.user.update(instructor_params[:user_attributes].except(:_destroy))
+  #       redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system."
+  #     elsif @user.save
+  #       puts 'save'
+  #       redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system."
+  #     else
+  #       render action: 'edit'
+  #     end
+  #   elsif @instructor.update(instructor_params)
+  #     redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system."
+  #   else
+  #     render action: 'edit'
+  #   end
+  #   rescue ActionView::MissingTemplate
+  #       redirect_to @instructor
+  # end
+
   def update
     if @instructor.update(instructor_params)
-      redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system."
+      redirect_to @instructor, notice: "The camp #{@instructor.proper_name} was revised in the system."
     else
       render action: 'edit'
     end
   end
+
+
 
   def destroy
     @instructor.destroy
@@ -52,7 +86,15 @@ class InstructorsController < ApplicationController
     end
 
     def instructor_params
-      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active, users_attributes: [:username, :role, :password, :password_confirmation]
+      params.require(:instructor).permit(
+        :id,
+        :first_name, 
+        :last_name, 
+        :bio, 
+        :email, 
+        :phone, 
+        :active, 
+        user_attributes: [:_destroy, :instructor_id, :username, :role, :password, :password_confirmation, :id]
         )
     end
 end

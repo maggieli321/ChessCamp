@@ -6,11 +6,16 @@
   <%= number_to_phone(@instructor.phone) %><br /><br />
 
 <strong>Role:&nbsp;&nbsp;</strong> 
+  <%= @instructor.user.nil? ? "N/A" : "#{@instructor.user.role}" %><br /><br />
+
+<strong>Username:&nbsp;&nbsp;</strong> 
+  <%= @instructor.user.nil? ? "N/A" : "#{@instructor.user.username}" %><br /><br />
+
 
 <strong>Email:&nbsp;&nbsp;</strong> 
   <%= mail_to @instructor.email, @instructor.email, encode: "javascript" %><br /><br />
 
-<strong>Active?&nbsp;&nbsp;</strong>
+<strong>Active:&nbsp;&nbsp;</strong>
   <%= @instructor.active ? "Yes" : "No" %><br /><br />
 
 <strong>Biography</strong><br />

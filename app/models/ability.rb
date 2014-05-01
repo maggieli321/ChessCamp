@@ -14,6 +14,9 @@ class Ability
         can :create, User do |u|  
           u.id == user.id
         end
+        # can :create, Student do |s|  
+        #   s.id == student_id
+        # end
         can :update, User do |u|  
           u.id == user.id
         end

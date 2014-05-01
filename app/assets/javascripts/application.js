@@ -12,8 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery_nested_form
 //= require foundation
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
 
+// return \\=require jquery.ui.all
+	$(function() {
+		$(".datepicker").datepicker({
+			format: 'mm/dd/YYYY'
+		});
+	});
