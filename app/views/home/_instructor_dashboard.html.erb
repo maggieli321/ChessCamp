@@ -1,0 +1,8 @@
+<h3>Welcome back 
+	<% if !current_user.username.nil? %>
+		, <%= current_user.username %></h3>
+	<% else %>
+		!
+	<% end %>
+
+	<p><%= link_to "click here to review camps.", camps_path %></p>

@@ -4,12 +4,45 @@
     <%= render :partial => "camp_details" %>
   </div>
 
-  <div class="small-1 columns">
-    &nbsp;
   </div>
-
+  <div id="map-canvas" style="width: 600px; height: 600px"></div>
   <div class="small-4 columns">
     <!-- SIDEBAR CONTENT GOES HERE -->
     <%= render partial: 'camp_instructors' %>
   </div>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgRN2i2UxnpVU9YKyZfLncv7jZj_wZufg&sensor=true">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var latitude = $('#latitude').val();
+        var longitude = $('#longitude').val();
+        var mapOptions = {
+          center: new google.maps.LatLng(latitude, longitude),
+          zoom: 13
+        };
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(latitude, longitude),
+          draggable: false,
+          bounds: true,
+          icon: {
+            path: "M768 896q0 106 -75 181t-181 75t-181 -75t-75 -181t75 -181t181 -75t181 75t75 181zM1024 896q0 -109 -33 -179l-364 -774q-16 -33 -47.5 -52t-67.5 -19t-67.5 19t-46.5 52l-365 774q-33 70 -33 179q0 212 150 362t362 150t362 -150t150 -362z",
+            scale: 0.02,
+            strokeColor: '#ffffff',
+            strokeWeight: 1,
+            fillColor: '#00BFFF',
+            fillOpacity: 1,
+            rotation: 180
+        }
+        });
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        marker.setMap(map);
+        console.log('got here')
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+
+
 </div>

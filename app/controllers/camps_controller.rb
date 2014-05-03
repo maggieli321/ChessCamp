@@ -1,7 +1,7 @@
 class CampsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
-  before_action :check_login
+  before_action :check_login, :except => [:index, :show]
   # authorize_resource
 
   def index

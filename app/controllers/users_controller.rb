@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include ActionView::Helpers::NumberHelper
-  before_action :check_login, only: [:edit, :update, :destroy]
-  authorize_resource
+  before_action :set_user, only: [:edit, :update, :destroy]
+  # authorize_resource
 
 
   def new
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
+    if current_user && (current_user.role?(:admin) || current_user.role?(:instructor))
     params.require(:user).permit(:username, :instructor_id, :role, :password, :password_confirmation)
   end
 
