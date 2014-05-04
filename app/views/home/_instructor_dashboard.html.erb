@@ -1,8 +1,5 @@
-<h3>Welcome back 
-	<% if !current_user.username.nil? %>
-		, <%= current_user.username %></h3>
-	<% else %>
-		!
-	<% end %>
-
+<h3>Welcome back <%= current_user.username %>!</h3>
 	<p><%= link_to "click here to review camps.", camps_path %></p>
+	<p><%= link_to "Edit your profile", edit_instructor_path(current_user.instructor_id) %></p>
+	ins id <%= current_user.instructor_id %>
+	user id<%= current_user.id %>

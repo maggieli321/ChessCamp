@@ -24,12 +24,16 @@
     <%= f.password_field :password_confirmation %>
   </p>
 	<p>
-    <%= f.label :role %><br />
-    <%= f.select :role, User::ROLES, :prompt => "Select ..." %>
+    <% if @user.role == 'admin' %>
+      <%= f.label :role %><br />
+      <%= f.select :role, User::ROLES, :prompt => "Select ..." %>
+    <% end %>
   </p>
 	<p>
-    <%= f.label :instructor_id %><br />
-    <%= f.collection_select :instructor_id, Instructor.all, :id, :name, :prompt => "Choose..." %>
+    <% if @user.role == 'admin' %>
+      <%= f.label :instructor_id %><br />
+      <%= f.collection_select :instructor_id, Instructor.all, :id, :name, :prompt => "Choose..." %>
+    <% end %>
   </p>
   <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>
 <% end %>

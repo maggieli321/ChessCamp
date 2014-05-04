@@ -1,7 +1,7 @@
 class InstructorsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
-  before_action :check_login
+  before_action :check_login, :except => [:show]
   # authorize_resource
 
   def index
@@ -31,6 +31,7 @@ class InstructorsController < ApplicationController
   end
 
   def create
+    authorize! :new, @instructor
     @instructor = Instructor.new(instructor_params)
     if @instructor.save
       redirect_to @instructor, notice: "#{@instructor.proper_name} was added to the system."
@@ -41,6 +42,7 @@ class InstructorsController < ApplicationController
 
 
   def update
+    authorize! :update, @instructor
     if @instructor.update(instructor_params)
       redirect_to @instructor, notice: "The camp #{@instructor.proper_name} was revised in the system."
     else
