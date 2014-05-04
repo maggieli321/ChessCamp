@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def edit
     # @user = current_user
-    if(current_user && current_user.role == 'admin')
+    if(current_user && (current_user.role == 'admin' || current_user.role == 'instructor'))
       @user = User.find(params[:id])
     else
       @user = :current_user
@@ -54,9 +54,9 @@ class UsersController < ApplicationController
   end  
   def user_params
     if current_user && current_user.role?(:admin)
-      params.require(:user).permit(:id, :username, :instructor_id, :role, :password, :password_confirmation)
-    else
-      params.require(:user).permit(:id, :username, :instructor_id, :password, :password_confirmation)
+      params.require(:user).permit(:username, :instructor_id, :role, :password, :password_confirmation)
+    elsif current_user && current_user.role?(:instructor)
+      params.require(:user).permit(:username, :instructor_id, :password, :password_confirmation)
     end
   end
   end

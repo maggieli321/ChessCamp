@@ -1,5 +1,34 @@
-<h3>Welcome back <%= current_user.username %>!</h3>
-	<p><%= link_to "click here to review camps.", camps_path %></p>
-	<p><%= link_to "Edit your profile", edit_instructor_path(current_user.instructor_id) %></p>
-	ins id <%= current_user.instructor_id %>
-	user id<%= current_user.id %>
+<h3>Welcome back <%= current_user.instructor.proper_name %>!</h3>
+	<p><%= link_to "View camps", camps_path %></p>
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr valign="top">
+		<td>
+			<h3>My Details &nbsp;&nbsp;</h3>
+
+			<strong>Phone:&nbsp;&nbsp;</strong> 
+			  <%= number_to_phone(current_user.instructor.phone) %><br /><br />
+
+			<strong>Role:&nbsp;&nbsp;</strong> 
+			  <%= current_user.instructor.user.role.capitalize %><br /><br />
+
+			<strong>Username:&nbsp;&nbsp;</strong> 
+			  <%= current_user.instructor.user.username %><br /><br />
+
+			<strong>Email:&nbsp;&nbsp;</strong> 
+			  <%= current_user.instructor.email %><br /><br />
+
+			<strong>Active:&nbsp;&nbsp;</strong>
+			  <%= current_user.instructor.active ? "Yes" : "No" %><br /><br />
+
+			<strong>Biography: </strong><br />
+			  <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
+			<p><%= link_to "Edit your details", edit_instructor_path(current_user.instructor_id) %></p>
+
+  		</td>
+		<td width="50">&nbsp;</td>
+
+	</tr>
+</table>
+
+	<p><%= link_to "Edit your profile", edit_user_path(current_user) %></p>

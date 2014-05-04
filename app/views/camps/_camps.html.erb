@@ -9,6 +9,10 @@
     <th></th>
   </tr>
 
+<% if camps.size == 0 %>
+  Sorry, there are no camps to be displayed.
+<% end %>
+
 <% camps.each do |camp| %>
   <tr>
     <td><%= link_to camp.name, camp_path(camp) %></td>

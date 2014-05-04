@@ -4,11 +4,20 @@
       <%= f.link_to_remove("x") %>
       <!-- fields -->
       <%= f.input :username %>
-      <%= f.password_field :password, :label => "password" %>
-      <%= f.password_field :password_confirmation %>
-      <%= f.select :role, User::ROLES, :prompt => "Select ..." %>
-      <%= f.collection_select :instructor_id, Instructor.all, :id, :name, :prompt => "Choose..." %>
 
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+
+      <% if @current_user.role == 'admin' %>
+        <%= f.label :role %>
+        <%= f.select :role, User::ROLES, :prompt => "Select ..." %>
+
+        <%= f.label :instructor %>
+        <%= f.collection_select :instructor_id, Instructor.all, :id, :name, :prompt => "Choose..." %>
+      <% end %>
 
     </div>
   </div>
