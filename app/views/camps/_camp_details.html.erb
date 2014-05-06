@@ -2,6 +2,9 @@
 <strong>Name:&nbsp;&nbsp;</strong> 
   <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
 
+<strong>Description:&nbsp;&nbsp;</strong> 
+  <%= @camp.curriculum.description %><br /><br />
+
 <strong>Camp Rating:&nbsp;&nbsp;</strong> 
   <%= @camp.curriculum.min_rating.zero? ? "Unrated" : @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %><br /><br />
 
@@ -35,10 +38,25 @@
 <strong>Active:&nbsp;&nbsp;</strong>
   <%= @camp.active ? "Yes" : "No" %><br /><br />
 
+<strong>Registrations</strong>
+  <% @camp.registrations.each do |reg| %>
+    <%= reg.student.proper_name %>
+    <%= link_to 'Edit', edit_registration_path %>
+    <%= link_to 'Delete', camp_path(reg.camp), data: { confirm: 'Are you sure you want to permanently remove this registration from the system?' }, method: :delete %><br /><br />
+  <% end %>
+
 <strong>Location:&nbsp;&nbsp;</strong>
 <%= hidden_field_tag('latitude', @camp.location.latitude) %>
 <%= hidden_field_tag('longitude', @camp.location.longitude) %>
 
 
 <%= link_to "Edit this camp", edit_camp_path(@camp), class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to 'Destroy camp', camp_path(@camp), data: { confirm: 'Are you sure you want to permanently remove this camp from the system?' }, method: :delete, class: "button tiny radius alert" %>
+
+    <%= render :partial => "registration" %>
+
+
+<% if @camp.registrations.size == 0 %>
+  <%= link_to 'Destroy camp', camp_path(@camp), data: { confirm: 'Are you sure you want to permanently remove this camp from the system?' }, method: :delete, class: "button tiny radius alert" %>
+<% end %>
+
+

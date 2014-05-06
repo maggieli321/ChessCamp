@@ -1,4 +1,6 @@
 class Location < ActiveRecord::Base
+  include ChessCampHelpers
+
   # relationships
   has_many :camps
 

@@ -1,8 +1,8 @@
 class LocationsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-  before_action :check_login
-  authorize_resource
+  before_action :check_login, :except => [:show, :index]
+  # authorize_resource
 
 
   def index
@@ -14,14 +14,17 @@ class LocationsController < ApplicationController
   end
 
   def new
+    authorize! :new, @location
     @location = Location.new
   end
 
   def edit
+    authorize! :edit, @location
   end
 
 
   def create
+    authorize! :create, @location
     @location = Location.new(location_params)
     if @location.save
       redirect_to @location, notice: "#{@location.name} location was added to the system."
@@ -31,6 +34,7 @@ class LocationsController < ApplicationController
   end
 
   def update
+    authorize! :update, @location
     if @location.update(location_params)
       redirect_to @location, notice: "#{@location.name} location was revised in the system."
     else
@@ -39,8 +43,15 @@ class LocationsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @location
+    @location = Location.find(params[:id])
     @location.destroy
-    redirect_to locations_url, notice: "#{@location.name} location was removed from the system."
+    if @location.destroyed?
+      redirect_to locations_url, notice: "#{@location.name} location was removed from the system."
+    else
+      flash[:error] = "#{@location.name} location cannot be removed from the system."
+      redirect_to locations_url
+    end
   end
 
   private

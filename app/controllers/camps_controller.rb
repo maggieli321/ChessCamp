@@ -12,6 +12,7 @@ class CampsController < ApplicationController
 
   def show
     @instructors = @camp.instructors.alphabetical.to_a
+    @registration = Registration.new
   end
 
   def new
@@ -53,8 +54,14 @@ class CampsController < ApplicationController
   end
 
   def destroy
-    @camp.destroy
-    redirect_to camps_url, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} was removed from the system."
+    status = @camp.destroy
+    if status
+      flash[:notice] = "Successfully removed #{@camp.name} from Arbeit."
+      redirect_to camps_url
+    else
+      flash[:error] = "#{@camp.name} could not be deleted because of completed tasks, but has been ended as of today."
+      redirect_to camps_url
+    end
   end
 
   private

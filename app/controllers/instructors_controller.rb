@@ -1,7 +1,7 @@
 class InstructorsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
-  before_action :check_login, :except => [:show]
+  before_action :check_login, :except => [:show, :index]
   # authorize_resource
 
   def index
@@ -44,7 +44,7 @@ class InstructorsController < ApplicationController
   def update
     authorize! :update, @instructor
     if @instructor.update(instructor_params)
-      redirect_to @instructor, notice: "The camp #{@instructor.proper_name} was revised in the system."
+      redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system."
     else
       render action: 'edit'
     end
@@ -54,7 +54,7 @@ class InstructorsController < ApplicationController
 
   def destroy
     @instructor.destroy
-    redirect_to instructors_url, notice: "#{@instructor.proper_name} was removed from the system."
+    redirect_to instructors_url, notice: "Instructors cannot be removed from the system."
   end
 
   private
@@ -71,6 +71,7 @@ class InstructorsController < ApplicationController
         :email, 
         :phone, 
         :active, 
+        :picture,
         user_attributes: [:instructor_id, :username, :role, :password, :password_confirmation, :id]
         )
     end

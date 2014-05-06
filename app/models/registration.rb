@@ -21,6 +21,7 @@ class Registration < ActiveRecord::Base
   scope :paid,         -> { where(payment_status: 'full') }
   scope :by_student,   -> { joins(:student).order('students.last_name, students.first_name') }
 
+  # PAYMENT_STATUSES = ['deposit', 'full']
 
   private
   def student_rating_appropriate_for_camp

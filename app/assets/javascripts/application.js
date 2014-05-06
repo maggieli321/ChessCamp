@@ -21,8 +21,41 @@ $(document).ready(function() {
 	$(".datepicker").datepicker({
 		dateFormat: 'mm/dd/yy'
 		// altField: "#actualDate"
-	});
-});
+	})});
+
+	// var min;
+	// var max;
+
+	// $('#registration_camp_id').change(function(){
+	// 	var e = $(this)[0];
+	// 	min = parseInt(e.options[e.selectedIndex].getAttribute('min'));
+	// 	max = parseInt(e.options[e.selectedIndex].getAttribute('max'));
+	// 	//var student_select = $('#registration_student_id')[0];
+	// 	//console.log(student_select.options)
+	// 	// for (var i = 0;  i < student_select.options.length; i++){
+	// 	// 	var student_rating = student_select.options[i].getAttribute('rating');
+	// 	// 	//console.log(student_rating);
+	// 	// 	if (student_rating <= min  && max >= student_rating){
+	// 	// 		$('#registration_student_id')[0].options[i].setAttribute("display","none");
+	// 	// 		console.log(student_select.options[i].getAttribute('rating'));
+	// 	// 		console.log('hidden')
+	// 	// 	} 
+	// 	// }
+	// });
+
+	// 	$('#registration_student_id').change(function(){
+	// 	$('#registration_button').attr('disabled', false);
+	// 	var e = $(this)[0];
+	// 	var student_rating = parseInt(e.options[e.selectedIndex].getAttribute('rating'));
+	// 	//max = parseInt(e.options[e.selectedIndex].getAttribute('max'));
+	// 	//var student_select = $('#registration_student_id')[0];
+	// 	//console.log(student_select.options)
+	// 	if (student_rating <= min  && max >= student_rating) {
+	// 		$('#registration_button').attr('disabled', true);
+	// 	}
+	// });
+
+	// });
 
 $(function(){ $(document).foundation(); });
 

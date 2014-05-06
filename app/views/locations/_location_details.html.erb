@@ -1,18 +1,29 @@
-<h3>Location Details</h3><br />
-<strong>Name:&nbsp;&nbsp;</strong> 
-  <%= @location.name %><br /><br />
+<h3><%= @location.name %> Location Details</h3><br />
+<%= link_to "Edit this location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
+<%= link_to 'Destroy location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "button tiny radius alert" %>
+<br /><br />
 
-<strong>Street Address:&nbsp;&nbsp;</strong> 
-  <%= @location.street_1 %><br /><br />
+<strong>Address:&nbsp;&nbsp;</strong> 
+  <%= @location.street_1 %>
+  <%= @location.street_2 %>
+  <%= @location.city %>,
+  <%= @location.state %>
+  <%= @location.zip %><br /><br />
 
-<strong>Street 2:&nbsp;&nbsp;</strong> 
-  <%= @location.street_2 %><br /><br />
+<% if !@location.city.empty? %>
+	<strong>City:&nbsp;&nbsp;</strong> 
+		<%= @location.city %><br /><br />
+<% end %>
 
-<strong>City State and Zip:&nbsp;&nbsp;</strong> 
-  <%= @location.city %>, <%= @location.state %> <%= @location.zip %><br /><br />
+<% if !@location.state.empty? %>
+	<strong>State:&nbsp;&nbsp;</strong> 
+		<%= @location.state %><br /><br />
+<% end %>
 
-<strong>Map: &nbsp;&nbsp;</strong>
-  <%=  %><br /><br />
+<% if !@location.zip.empty? %>
+	<strong>Zip:&nbsp;&nbsp;</strong> 
+		<%= @location.zip %><br /><br />
+<% end %>
 
 <strong>Maximum Capacity: &nbsp;&nbsp;</strong>
   <%= @location.max_capacity %><br /><br />
@@ -20,12 +31,9 @@
 <strong>Active: &nbsp;&nbsp;</strong>
   <%= @location.active ? "Yes" : "No" %><br /><br />
 
-<strong>Location:&nbsp;&nbsp;</strong>
+<strong>Map below &nbsp;&nbsp;</strong>
+  <%=  %><br /><br />
 
 <%= hidden_field_tag('latitude', @location.latitude) %>
 <%= hidden_field_tag('longitude', @location.longitude) %>
-
-<%= link_to "Edit this location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to 'Destroy location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "button tiny radius alert" %>
-
 

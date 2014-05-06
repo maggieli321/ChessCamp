@@ -1,15 +1,14 @@
-<h3><%= status %> Camps</h3>
-
+<h3><%= status %> Locations</h3>
+<% if locations.size == 0 %>
+  Sorry, there are no curriculums to be displayed.
+<% else %>
 <table class="table">
   <tr>
-    <th width="260">Name</th>
-    <th width="120">Address</th>
-    <th width="120">Street 2</th>
+    <th width="300">Name</th>
+    <th width="400">Address</th>
     <th width="260">City</th>
     <th width="120">State</th>
-    <th width="120">Zip</th>
-    <th width="260">Capacity</th>
-    <th width="120">Active</th>
+    <th width="100">Capacity</th>
     <th></th>
     <th></th>
   </tr>
@@ -18,13 +17,15 @@
   <tr>
     <td><%= link_to location.name, location_path(location) %></td>
     <td align="center"><%= location.street_1 %></td>
-    <td align="center"><%= location.street_2 %></td>
+    <td align="center"><%= location.city %></td>
+    <td align="center"><%= location.state %></td>
     <td align="center"><%= location.max_capacity %></td>
-
 
   </tr>
 <% end %>
 </table>
+
+<% end %>
 <!-- Add the pagination using will_paginate gem -->
 <span class="paginate">
 <%= will_paginate locations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>

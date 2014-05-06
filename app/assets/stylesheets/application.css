@@ -15,3 +15,7 @@
 
  *= require jquery.ui.all
  */
+
+/*select option[disabled] {
+    display: none;
+}*/

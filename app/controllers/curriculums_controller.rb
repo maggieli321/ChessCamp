@@ -2,7 +2,7 @@ class CurriculumsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
   before_action :check_login
-  authorize_resource
+  # authorize_resource
 
   def index
     @active_curriculums = Curriculum.active.alphabetical.paginate(:page => params[:page]).per_page(10)
@@ -14,10 +14,12 @@ class CurriculumsController < ApplicationController
   end
 
   def new
+    authorize! :new, @curriculum
     @curriculum = Curriculum.new
   end
 
   def edit
+    authorize! :edit, @curriculum
   end
 
   def create
@@ -40,8 +42,7 @@ class CurriculumsController < ApplicationController
   end
 
   def destroy
-    @curriculum.destroy
-    redirect_to curriculums_url, notice: "#{@curriculum.name} was removed from the system."
+    redirect_to curriculums_url, notice: "Curriculums cannot be removed from the system."
   end
 
   private
