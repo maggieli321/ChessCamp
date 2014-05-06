@@ -1,20 +1,24 @@
 <h3>Log In</h3>
 
 <%= form_tag sessions_path do %>
-
 	<div class="control-group">
+<div id="special">
     <%= label_tag :username %>
-    <div class="controls">
+    <div class="controls", width: "100px">
       <%= text_field_tag :username, params[:username] %>
     </div>
-  </div>
-
+</div>
 	<div class="control-group">
+  <div id="special">
     <%= label_tag :password %>
     <div class="controls">
-      <%= password_field_tag :password %>
+    <%= password_field_tag :password %>
     </div>
   </div>
+  </div>
 
+
+
+</div>
   <div class="actions"><%= submit_tag "Log In" %></div>
 <% end %>

@@ -1,4 +1,4 @@
-  <div class="contain-to-grid">
+  
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
@@ -67,5 +67,15 @@
 
         </ul>
       </section>
+    <div id="container">
+      <div id="login">
+          <% if logged_in? %>
+            <%= link_to 'Logout', logout_path %>
+          <% else %>
+            <%= link_to 'Login', login_path %>
+          <% end %>
+      </div>
+
+
+    </div>
     </nav>
-  </div>

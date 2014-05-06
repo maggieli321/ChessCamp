@@ -21,6 +21,10 @@ ChessCamp::Application.routes.draw do
 
   resources :sessions
 
+  # PDF 
+  get 'report/payment/:id', to: 'report#show_camp', :as => 'payment_pdf'
+  get 'report/family/:id', to: 'report#show_family', :as => 'family_pdf'
+
   get 'user/edit' => 'users#edit', :as => :edit_current_user
   get 'signup' => 'users#new', :as => :signup
   get 'login' => 'sessions#new', :as => :login

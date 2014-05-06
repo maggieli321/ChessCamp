@@ -33,7 +33,14 @@ body{
 	left: 0px;
 	right:0px;
 	color: white;
+	margin-top: 0px;
+	padding-top: 0px;
 	background-color: black;
+	width: 100%;
+}
+
+.inactive-family{
+	display: none;
 }
 
 
@@ -58,6 +65,10 @@ h1{
 	font-weight: bold;
 }
 
+footer{
+	font-size: 15pt;
+}
+
 h2{
 	font-color: white;
 	font-size: 16pt;
@@ -72,8 +83,9 @@ h3{
 .white{
 	background-color: white;
 	width: 78%;
-	padding: 10px;
-	margin: 20px auto;
+	padding-left: 10px;
+	padding-top: 50px;
+	margin: 0px auto;
 	float: center;
 }
 
@@ -87,8 +99,13 @@ h3{
 	padding: 10px;
 	margin: 20px auto;
 	float: center;
+	text-align: left;
+	margin-bottom: 0px;
 }
 
+.tablecenter{
+	width: 70%;
+}
 p{
 	text-align: left;
 }
@@ -96,4 +113,20 @@ p{
 
 .row{
 	float: center;
+}
+
+.formtext{
+	text-align: left;
+}
+
+#special{
+	text-align: left;
+	width: 200px;
+}
+
+#login{
+	float: right;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #99CCFF;
 }

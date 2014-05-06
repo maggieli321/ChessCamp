@@ -1,15 +1,16 @@
-<h3><%= status %> Camps</h3>
+<h1><%= status %> Camps</h1>
 <% if camps.size == 0 %>
   Sorry, there are no camps to be displayed.
 <% else %>
 
-  <table class="table">
+  <table class="table", width="800", float: center>
     <tr>
-      <th width="260">Name</th>
-      <th width="120">Start On</th>
-      <th width="120">Time</th>
-      <th></th>
-      <th></th>
+      <th width="150">Name</th>
+      <th width="50">Start On</th>
+      <th width="50">Time</th>
+      <th width="50"></th>
+      <th width="100"></th>
+      <th width="100"></th>
     </tr>
 
   <% camps.each do |camp| %>
@@ -17,9 +18,9 @@
       <td><%= link_to camp.name, camp_path(camp) %></td>
       <td align="center"><%= camp.start_date.strftime('%m/%d/%y') %></td>
       <td align="center"><%= camp.time_slot == "am" ? "Morning" : "Afternoon" %></td>
-      <td><%= link_to 'Edit', edit_camp_path(camp), class: "button tiny radius" %></td>
-      <td><%= link_to 'New Registration', new_registration_path(:camp_id => camp.id), class: "button tiny radius" %></td>
-
+      <td><%= link_to 'Edit', edit_camp_path(camp) %></td>
+      <td><%= link_to 'New Registration', new_registration_path(:camp_id => camp.id, :type => 'camp') %></td>
+      <td><%= link_to 'Camp Report', payment_pdf_path(:id => camp.id) + ".pdf" %></td>
     </tr>
   <% end %>
 <% end %>

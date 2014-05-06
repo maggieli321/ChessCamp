@@ -1,4 +1,4 @@
-<h3>Active Students</h3>
+<h1>Active Students</h1>
 <% if @active_students.size == 0 %>
   Sorry, there are no students to be displayed.
 <% else %>
@@ -16,7 +16,7 @@
       <td><%= link_to student.name, student_path(student) %></td>
       <td align="center"><%= student.age %></td>
       <td align="center">  <%= student.rating.zero? ? "Unrated" : student.rating %></td>
-      <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
+      <td><%= link_to 'Edit', edit_student_path(student) %></td>
     </tr>
   <% end %>
   </table>

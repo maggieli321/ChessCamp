@@ -1,4 +1,4 @@
-<h3>Active Instructors</h3>
+<h1>Active Instructors</h1>
 <% if @active_instructors.size == 0 %>
   Sorry, there are no instructors to be displayed.
 <% else %>
@@ -17,7 +17,7 @@
       <td align="center"><%= number_to_phone instructor.phone %></td>
       <td align="center"><%= instructor.camps.size %></td>
 
-      <td><%= link_to 'Edit', edit_instructor_path(instructor), class: "button tiny radius" %></td>
+      <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
     </tr>
   <% end %>
   </table>

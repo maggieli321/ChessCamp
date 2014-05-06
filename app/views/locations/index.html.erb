@@ -1,16 +1,14 @@
 <div class="row">
-  <div class="small-7 columns">
+  <div class="small-12 columns">
     <!-- MAIN CONTENT GOES HERE -->
+    <div class="tablecenter">
     <%= render :partial => "locations", locals: { status: "Active", locations: @active_locations } %>
     <p>&nbsp;</p>
     <%= render :partial => "locations", locals: { status: "Inactive", locations: @inactive_locations } %>
     <br />
-    <%= link_to "Add a new locations", new_location_path, class: "button tiny radius" %>
+  </div>
+    <%= link_to "Add a new locations", new_location_path %>
   </div>
 
 
-  <div class="small-4 columns">
-    <!-- SIDEBAR CONTENT GOES HERE -->
-    <%= render :partial => "inactive_locations" %>
-  </div>
 </div>

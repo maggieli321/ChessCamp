@@ -1,8 +1,62 @@
   <div class="white" align="center">
 
-<h3>Welcome back, <%= current_user.username %>, the Almighty Admin!</h3>
-<body>
+<h1>Welcome back, <%= current_user.username %>, the Almighty Admin!</h1>
 	<p><%= link_to "Edit your profile", edit_user_path(current_user) %></p>
+
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr valign="top">
+			<strong>Your Upcoming Camps:</strong>
+			<% if current_user.instructor.camps.size == 0 %>
+			  You have no upcoming camps.
+			<% else %>			  
+				  <table class= "table">
+				    <tr>
+				      <th width="200">Name</th>
+				      <th width="100">Start Date</th>
+				    </tr>
+
+				  <% current_user.instructor.camps.each do |c| %>
+	    		   <tr>
+				  	<td><%= link_to c.curriculum.name, camp_path(c.id) %></td>
+				  	<td><%= c.start_date.strftime('%m/%d/%y') %></td>
+				   </tr>
+				 <% end %>
+				</table>
+			<% end %>
+	</tr>
+</table>		
+
+			<h3>My Details &nbsp;&nbsp;</h3>
+			<p><%= link_to "Edit your details", edit_instructor_path(current_user.instructor_id) %></p>
+
+				<% if current_user.instructor.picture_url.nil? %>
+					<p, float: right><%= image_tag 'default.jpg' %></p>
+				<% else %>
+					<p><%= image_tag current_user.instructor.picture_url %></p>
+				<% end %>
+
+<div class="formtext">
+			<strong>Phone:&nbsp;&nbsp;</strong> 
+			  <%= number_to_phone(current_user.instructor.phone) %><br /><br />
+
+			<strong>Role:&nbsp;&nbsp;</strong> 
+			  <%= current_user.instructor.user.role.capitalize %><br /><br />
+
+			<strong>Username:&nbsp;&nbsp;</strong> 
+			  <%= current_user.instructor.user.username %><br /><br />
+
+			<strong>Email:&nbsp;&nbsp;</strong> 
+			  <%= current_user.instructor.email %><br /><br />
+
+			<strong>Active:&nbsp;&nbsp;</strong>
+			  <%= current_user.instructor.active ? "Yes" : "No" %><br /><br />
+
+			<strong>Biography: </strong><br /><br />
+			  <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
+</div>
+
+</body>
 </body>
 
       </div>

@@ -5,11 +5,11 @@
 
   <table class="table">
     <tr>
-      <th width="200">Family Name</th>
-      <th width="200">Parent First Name</th>
+      <th width="150">Family Name</th>
+      <th width="150">Parent First Name</th>
       <th width="100">Email</th>
       <th width="100">Phone</th>
-      <th></th>
+      <th>Family Report</th>
       <th></th>
     </tr>
 
@@ -19,8 +19,8 @@
       <td align="center"><%= family.parent_first_name %></td>
       <td align="center"><%= family.email %></td>
       <td align="center"><%= number_to_phone family.phone %></td>
-
-      <td><%= link_to 'Edit', edit_family_path(family), class: "button tiny radius" %></td>
+      <td><%= link_to 'Family Report', family_pdf_path(:id => family.id) + ".pdf" %></td>
+      <td><%= link_to 'Edit', edit_family_path(family) %></td>
     </tr>
   <% end %>
   </table>
