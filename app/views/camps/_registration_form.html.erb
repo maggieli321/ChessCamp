@@ -1,0 +1,14 @@
+<%= simple_form_for @registration, :html => { :class => 'form-horizontal' , class: "formtext"} do |f| %>
+  <fieldset>
+    <legend>New Registration</legend>
+		<%= f.input :camp_id, input_html: {class: "hidden", value: @camp.id}, label: false %>
+		<%= f.input :student_id, :collection => Student.active.below_rating(@camp.curriculum.max_rating).at_or_above_rating(@camp.curriculum.min_rating).alphabetical %>
+    <%= f.input :payment_status, collection: [[' Deposit', 'deposit'], [' Full', 'full']], as: :radio_buttons %>
+    <%= f.input :points_earned %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary', :id => 'registration_button' %>
+      <%= link_to 'Cancel', camps_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

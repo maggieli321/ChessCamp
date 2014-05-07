@@ -1,8 +1,6 @@
-<h3><%= @location.name %> Location Details</h3><br />
-<%= link_to "Edit this location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to 'Destroy location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "button tiny radius alert" %>
-<br /><br />
+<h1><%= @location.name %> Location Details</h1>
 
+<div class="formtext">
 <strong>Address:&nbsp;&nbsp;</strong> 
   <%= @location.street_1 %>
   <%= @location.street_2 %>
@@ -31,9 +29,14 @@
 <strong>Active: &nbsp;&nbsp;</strong>
   <%= @location.active ? "Yes" : "No" %><br /><br />
 
-<strong>Map below &nbsp;&nbsp;</strong>
-  <%=  %><br /><br />
+<%= link_to "Edit this location", edit_location_path(@location) %>&nbsp;&nbsp;&nbsp;&nbsp;
 
+<%= link_to 'Destroy location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "alert" %>
+<br /><br />
+
+<h2>Map: &nbsp;&nbsp;</h2>
+  <%=  %>
+</div>
 <%= hidden_field_tag('latitude', @location.latitude) %>
 <%= hidden_field_tag('longitude', @location.longitude) %>
 

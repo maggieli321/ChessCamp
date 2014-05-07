@@ -1,7 +1,8 @@
-<h3>Welcome back <%= current_user.instructor.proper_name %>!</h3><br /><br />
+<h1>Welcome back <%= current_user.instructor.proper_name %>!</h1>
 <!-- 	<p><%#= link_to "View camps", camps_path %></p>
  -->
- <body>
+ 	<%= link_to "Edit your profile", edit_user_path(current_user) %><br /><br /><br />
+<body>
 <table border="0" cellspacing="5" cellpadding="5">
 	<tr valign="top">
 			<strong>Your Upcoming Camps:</strong>
@@ -25,13 +26,16 @@
 	</tr>
 </table>		
 
-			<h3>My Details &nbsp;&nbsp;</h3>
+<div class="textalignleft">
+			<h2>My Details &nbsp;&nbsp;</h2>
+			  <div class="small-4 columns">
+
 				<% if current_user.instructor.picture_url.nil? %>
 					<p><%= image_tag 'default.jpg' %></p>
 				<% else %>
 					<p><%= image_tag current_user.instructor.picture_url %></p>
 				<% end %>
-
+			</div>
 
 			<strong>Phone:&nbsp;&nbsp;</strong> 
 			  <%= number_to_phone(current_user.instructor.phone) %><br /><br />
@@ -48,10 +52,9 @@
 			<strong>Active:&nbsp;&nbsp;</strong>
 			  <%= current_user.instructor.active ? "Yes" : "No" %><br /><br />
 
-			<strong>Biography: </strong><br /><br />
+			<strong>Biography: </strong>
 			  <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
-			<p><%= link_to "Edit your details", edit_instructor_path(current_user.instructor_id) %></p>
+			<%= link_to "Edit your details", edit_instructor_path(current_user.instructor_id) %>
 
-
-	<p><%= link_to "Edit your profile", edit_user_path(current_user) %></p>
+</div>
 </body>

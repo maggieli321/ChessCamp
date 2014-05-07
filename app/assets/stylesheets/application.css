@@ -19,3 +19,7 @@
 /*select option[disabled] {
     display: none;
 }*/
+
+.hidden{
+	display: none;
+}

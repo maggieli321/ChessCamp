@@ -1,19 +1,22 @@
 <% unless @camp.registrations.size.zero? %>
   <!-- <h3>&nbsp;</h3> -->
-
-  <div class="panel clearfix">
-    <h5>Student Registrations</h5>
+<br />
+    <h2>Student Registrations</h2>
   <table class="datagrid">
+    <tr>
+      <th>Student Name</th>
+      <th>Rating</th>
+    </tr>
 
   <% @camp.registrations.each do |registration| %>
     <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
-      <td><%= link_to registration.student.proper_name, registration_path(registration) %></td>
+      <td><%= link_to registration.student.name, student_path(registration.student) %></td>
+      <td><%= registration.student.rating %></td>
       <td align="left"><%= link_to 'edit', edit_registration_path(registration)  %></td>
       <td align="left"><%= link_to 'delete', registration_path(registration), data: { confirm: 'Are you sure you want to permanently remove this registration from the system?' }, method: :delete  %></td>
     </tr>
   <% end %>
   </table>
-</div>
 
 
 <% else %>
@@ -21,4 +24,4 @@
     <h5>No Registrations at this time</h5>
   </div>
 <% end %>
-     <%= link_to 'New Registration', new_registration_path %>
+     <%= link_to 'Create New Registration', new_registration_path(:camp_id => @camp.id, :type => 'camp') %><br /><br /><br />

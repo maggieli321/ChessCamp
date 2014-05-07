@@ -44,6 +44,7 @@ body{
 }
 
 
+
 a:link{ 
 	color: #0174DF;
 	size: 14pt;
@@ -103,6 +104,10 @@ h3{
 	margin-bottom: 0px;
 }
 
+.textalignleft{
+	text-align: left;
+}
+
 .tablecenter{
 	width: 70%;
 }
@@ -129,4 +134,8 @@ p{
 	padding-left: 10px;
 	padding-right: 10px;
 	background-color: #99CCFF;
+}
+
+.hidden{
+	display: none !important;
 }

@@ -25,12 +25,13 @@ class RegistrationsController < ApplicationController
   def create
   # authorize! :create, @registration
     @registration = Registration.new(registration_params)
-      if @registration.save!
+      if @registration.save
         # if saved to database
         redirect_to @registration.camp, notice: "Successfully created registration for #{@registration.student.proper_name}."
       else
         # return to the 'new' form
-        render action: 'new', error: "Registration could not be created for #{@registration.student.proper_name}."
+        
+        redirect_to :back, notice: "Could not create registration for #{@registration.student.proper_name}."
       end
     end
 
@@ -61,6 +62,6 @@ class RegistrationsController < ApplicationController
   end
 
   def registration_params
-    params.require(:registration).permit(:camp_id, :student_id, :payment_status, :points_earned)
+    params.require(:registration).permit(:id, :camp_id, :student_id, :payment_status, :points_earned)
   end
 end
