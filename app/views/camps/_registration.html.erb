@@ -8,7 +8,7 @@
       <th>Rating</th>
     </tr>
 
-  <% @camp.registrations.each do |registration| %>
+  <% @camp.registrations.by_student.each do |registration| %>
     <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
       <td><%= link_to registration.student.name, student_path(registration.student) %></td>
       <td><%= registration.student.rating %></td>

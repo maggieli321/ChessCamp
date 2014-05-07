@@ -8,9 +8,9 @@
 <strong>Date of Birth:&nbsp;&nbsp;</strong> 
   <%= @student.date_of_birth.strftime('%m/%d/%Y') %><br /><br />
 
-<strong>Camp:&nbsp;&nbsp;</strong> 
+<strong>Camp(s):&nbsp;&nbsp;</strong><br />
   <% @student.camps.each do |c| %>
-  	<%= c.name %>: <%= c.start_date.strftime('%m/%d/%y') %>
+  	<%= c.name %>: <%= c.start_date.strftime('%m/%d/%y') %><br />
   <% end %><br /><br />
 <!--   <%#= @student.date_of_birth.strftime('%m/%d/%Y') %><br /><br />
  -->

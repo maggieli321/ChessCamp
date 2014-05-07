@@ -22,18 +22,6 @@ class CampsController < ApplicationController
 
   def edit
     authorize! :edit, @camp
-    # Handle shortcut deactivations
-    # unless params[:status].nil?
-    #   if params[:status].match(/deactivate/) # == 'deactivate_prj' || params[:status] == 'deactivate_asgn'
-    #     @camp.update_attribute(:active, false)
-    #     flash[:notice] = "#{@camp.curriculum.name} was made inactive."
-    #   elsif params[:status].match(/activate/) # == 'activate_prj' || params[:status] == 'activate_asgn'
-    #     @camp.update_attribute(:active, true)
-    #     flash[:notice] = "#{@camp.curriculum.name} was made active."
-    #   end
-    #   redirect_to curriculums_path(@camp.curriculum) if params[:status].match(/_curr/)
-    #   redirect_to camp_path if params[:status].match(/_camp/)
-    # end
   end
 
   def create

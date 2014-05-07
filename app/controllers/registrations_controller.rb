@@ -47,13 +47,8 @@ class RegistrationsController < ApplicationController
   end
 
   def destroy
-  # authorize! :destroy, @registration
-  #   @registration = Registration.find(params[:id])
-  #   camp_id = @registration.camp.id
     @registration.destroy
     redirect_to @registration.camp, notice: "Successfully removed registration for #{@registration.student.proper_name} from chess camp system"
-    # redirect_to registrations_url
-    # redirect_to camp_path(camp_id) # go to show  page
   end
 
   private
