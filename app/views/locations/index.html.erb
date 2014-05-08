@@ -14,7 +14,8 @@
             <h3></h3>
             <%= render :partial => "inactive_locations" %>
         </div></br></br>
+        <% if !current_user.nil? %> 
             <%= link_to "Add a new location", new_location_path %>
-
+        <% end %>
     </div>
 </div>

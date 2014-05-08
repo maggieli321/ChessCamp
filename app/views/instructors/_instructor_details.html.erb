@@ -22,12 +22,12 @@
 <strong>Biography</strong><br />
   <%= @instructor.bio.nil? ? "N/A" : @instructor.bio %><br /><br />
 
-
-<% if current_user.instructor.picture_url.nil? %>
-	<p><%= image_tag 'default.jpg' %></p>
-<% else %>
-	<p><%= image_tag current_user.instructor.picture_url %></p>
-<% end %><br />
-
-<%= link_to "Edit this instructor", edit_instructor_path(@instructor) %>&nbsp;&nbsp;
+	<% if @instructor.picture_url.nil? %>
+		<p><%= image_tag 'default.jpg' %></p>
+	<% else %>
+		<p><%= image_tag current_user.instructor.picture_url %></p>
+	<% end %><br />
+<% if !current_user.nil? %>
+	<%= link_to "Edit this instructor", edit_instructor_path(@instructor) %>&nbsp;&nbsp;
+<% end %>
 <%#= link_to 'Destroy instructor', instructor_path(@instructor), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "button tiny radius alert" %>

@@ -16,7 +16,9 @@
       <td><%= link_to location.name, location_path(location) %></td>
       <td align="center"><%= location.street_1 %> <%= location.street_2 %></td>
       <td align="center"><%= location.max_capacity %></td>
+  <% if !current_user.nil? %>      
       <td><%= link_to 'Edit', edit_location_path(location)%></td>
+  <% end %>  
     </tr>
   <% end %>
   </table>

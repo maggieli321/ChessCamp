@@ -12,6 +12,7 @@
   <%= @curriculum.active ? "Yes" : "No" %><br /><br />
 
 
-
-<%= link_to "Edit this curriculum", edit_curriculum_path(@curriculum) %>&nbsp;&nbsp;
+<% if !current_user.nil? %>
+	<%= link_to "Edit this curriculum", edit_curriculum_path(@curriculum) %>&nbsp;&nbsp;
+<% end %>
 <%#= link_to 'Destroy curriculum', curriculum_path(@curriculum), data: { confirm: 'Are you sure you want to permanently remove this curriculum from the system?' }, method: :delete, class: "button tiny radius alert" %>

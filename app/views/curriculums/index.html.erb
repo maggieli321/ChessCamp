@@ -14,8 +14,8 @@
         <h3></h3>
         <%= render :partial => "inactive_curriculums" %>
     </div>
-
+  <% if !current_user.nil? %>
     <%= link_to "Add a new curriculum", new_curriculum_path %>
-
+  <%end%>
   </div>
 </div>

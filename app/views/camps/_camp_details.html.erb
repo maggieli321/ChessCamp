@@ -1,5 +1,7 @@
-<h1>Camp Details</h1><%= link_to "Edit this camp", edit_camp_path(@camp) %><br /><br />
-
+<h1>Camp Details</h1>
+  <% if !current_user.nil? %>
+    <%= link_to "Edit this camp", edit_camp_path(@camp) %><br /><br />
+  <% end %>
 <strong>Name:&nbsp;&nbsp;</strong> 
   <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
 
@@ -36,8 +38,9 @@
 
 
     <%= render :partial => "registration" %>
+  <% if !current_user.nil? %>
     <%= render :partial => "registration_form" %>
-
+  <% end %>
 
 
 <h2><%= link_to 'Location', location_path(@camp.location) %>&nbsp;&nbsp;</h2>

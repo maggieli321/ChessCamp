@@ -15,7 +15,8 @@
         <%= render :partial => "inactive_instructors" %>
     </div>
 
+  <% if !current_user.nil? %>
     <%= link_to "Add a new instructor", new_instructor_path %>
-
+  <% end %>
   </div>
 </div>

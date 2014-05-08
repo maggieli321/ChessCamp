@@ -18,8 +18,10 @@
       <td><%= link_to camp.name, camp_path(camp) %></td>
       <td align="center"><%= camp.start_date.strftime('%m/%d/%y') %></td>
       <td align="center"><%= camp.time_slot == "am" ? "Morning" : "Afternoon" %></td>
-      <td><%= link_to 'Edit', edit_camp_path(camp) %></td>
-      <td><%= link_to 'Camp Report', payment_pdf_path(:id => camp.id) + ".pdf" %></td>
+      <% if !current_user.nil? %>  
+        <td><%= link_to 'Edit', edit_camp_path(camp) %></td>
+        <td><%= link_to 'Camp Report', payment_pdf_path(:id => camp.id) + ".pdf" %></td>
+      <% end %>
     </tr>
   <% end %>
 <% end %>

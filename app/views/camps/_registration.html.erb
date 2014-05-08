@@ -5,15 +5,19 @@
   <table class="datagrid">
     <tr>
       <th>Student Name</th>
+    <% if !current_user.nil? %>
       <th>Rating</th>
+    <% end %>
     </tr>
 
   <% @camp.registrations.by_student.each do |registration| %>
     <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
       <td><%= link_to registration.student.name, student_path(registration.student) %></td>
+    <% if !current_user.nil? %>
       <td><%= registration.student.rating %></td>
       <td align="left"><%= link_to 'edit', edit_registration_path(registration)  %></td>
       <td align="left"><%= link_to 'delete', registration_path(registration), data: { confirm: 'Are you sure you want to permanently remove this registration from the system?' }, method: :delete  %></td>
+    <% end %>
     </tr>
   <% end %>
   </table>
