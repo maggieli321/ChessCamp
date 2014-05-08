@@ -1,8 +1,8 @@
 <div class="row">
     <div class="span12">
         <div class="btn-group floatright" data-toggle="buttons-radio">
-            <button type="button" class="family-active-toggle btn btn-info" >Active</button>
-            <button type="button" class="family-inactive-toggle btn btn-info">Inactive</button>
+            <button type="button" class="fam-active-toggle btn btn-info" >Active</button>
+            <button type="button" class="fam-inactive-toggle btn btn-info">Inactive</button>
         </div>
 
         <div class = "active-family nav-tabs">
@@ -13,19 +13,8 @@
         <div class = "inactive-family nav-tabs">
             <h3></h3>
             <%= render :partial => "inactive_families" %>
-        </div>
+        </div></br></br>
+            <%= link_to "Add a new family", new_family_path %>
+
     </div>
-
-
-<!--     <#% if false %>
-      <div class="span7">
-        <h3>Active Families</h3>
-        <%#= render :partial => "active_families" %>
-      </div>
-      <div class="span5">
-        <h3>Inactive Families</h3>
-        <%#= render :partial => "inactive_families" %>
-      </div>
-    <#% end %> -->
-
 </div>

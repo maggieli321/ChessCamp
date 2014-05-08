@@ -9,12 +9,12 @@ class FamilyPDF < Prawn::Document
 	end
 
 	def report_title
-		text @family.family_name << " Report", :size => 24
+		text @family.family_name << " Family Report", :size => 24
 	end
 
 	def family_table
 		family_data = []
-	 	@family.students.each do |student|
+	 	@family.students.alphabetical.each do |student|
 	 		family_data << [student.name]
 	 	end
 	 	table(family_data)

@@ -1,14 +1,20 @@
 <div class="row">
-  <div class="small-12 columns">
-    <!-- MAIN CONTENT GOES HERE -->
-    <div class="tablecenter">
-    <%= render :partial => "locations", locals: { status: "Active", locations: @active_locations } %>
-    <p>&nbsp;</p>
-    <%= render :partial => "locations", locals: { status: "Inactive", locations: @inactive_locations } %>
-    <br />
-  </div>
-    <%= link_to "Add a new location", new_location_path %>
-  </div>
+    <div class="span12">
+        <div class="btn-group floatright" data-toggle="buttons-radio">
+            <button type="button" class="location-active-toggle btn btn-info" >Active</button>
+            <button type="button" class="location-inactive-toggle btn btn-info">Inactive</button>
+        </div>
 
+        <div class = "active-location nav-tabs">
+            <h3></h3>
+            <%= render :partial => "active_locations" %>
+        </div>
 
+        <div class = "inactive-location nav-tabs">
+            <h3></h3>
+            <%= render :partial => "inactive_locations" %>
+        </div></br></br>
+            <%= link_to "Add a new location", new_location_path %>
+
+    </div>
 </div>

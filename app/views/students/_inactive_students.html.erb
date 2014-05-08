@@ -1,12 +1,27 @@
-<% unless @inactive_students.empty? %>
-  <div class="panel clearfix">
-    <h1>Inactive Students</h1>
-    <ul class="side-nav">
-      <% @inactive_students.each do |student| %>
-        <li><%= link_to student.name, student_path(student) %></li>
-	    <td align="center"><%= student.age %></td>
+<h1>Inactive Students</h1>
+<% if @inactive_students.size == 0 %>
+  Sorry, there are no students to be displayed.
+<% else %>
+  <table class="table">
+    <tr>
+      <th width="200">Name</th>
+      <th width="100">Age</th>
+      <th width="100">Rating</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @inactive_students.each do |student| %>
+    <tr>
+      <td><%= link_to student.name, student_path(student) %></td>
+      <td align="center"><%= student.age %></td>
       <td align="center">  <%= student.rating.zero? ? "Unrated" : student.rating %></td>
-      <% end %>
-    </ul>
-  </div>
+      <td><%= link_to 'Edit', edit_student_path(student) %></td>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @inactive_students, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

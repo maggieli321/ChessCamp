@@ -1,9 +1,17 @@
 ## 67-272: Chess Camp Phase 5  ##
 
-Note for CUCUMBER TESTS: Since I did the toggling extra credit, it will make tests that check for "Should not show inactive _____" fail. Spoken to Michael Ferroco (hi!) about this and it is okay.
+Hello!
 
-Extra Credits:
-Google maps non-static functionality on camps and locations
-Toggle functionality for all active/inactive
-PDF
+Note for CUCUMBER TESTS: Since I did the toggling extra credit, tests for "And I should not see [inactive entity]" will fail. Level 7 tests for "And I should not see [inactive student name]" will fail in the Scenario: View all families. 
+----> Spoken to Michael (hi!) about this and he said it is okay.
 
+
+Extra Credit:
+1) Google maps non-static functionality on camp details and location details page
+2) Toggle functionality for active/inactive curriculums, instructors, locations, families, and students.
+3) Can generate PDFs for family payments and camp payment statuses
+
+
+Thank you!
+
+Maggie

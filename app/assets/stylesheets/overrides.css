@@ -43,7 +43,21 @@ body{
 	display: none;
 }
 
+.inactive-curriculum{
+	display: none;
+}
 
+.inactive-instructor{
+	display: none;
+}
+
+.inactive-location{
+	display: none;
+}
+
+.inactive-student{
+	display: none;
+}
 
 a:link{ 
 	color: #0174DF;

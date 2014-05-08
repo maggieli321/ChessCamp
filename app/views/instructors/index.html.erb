@@ -1,17 +1,21 @@
 <div class="row">
-  <div class="small-7 columns">
-    <!-- MAIN CONTENT GOES HERE -->
-    <%= render :partial => "active_instructors" %>
-    <br />
+  <div class="span12">
+    <div class="btn-group floatright" data-toggle="buttons-radio">
+        <button type="button" class="ins-active-toggle btn btn-info" >Active</button>
+        <button type="button" class="ins-inactive-toggle btn btn-info">Inactive</button>
+    </div>
+
+    <div class = "active-instructor nav-tabs">
+        <h3></h3>
+        <%= render :partial => "active_instructors" %>
+    </div>
+
+    <div class = "inactive-instructor nav-tabs">
+        <h3></h3>
+        <%= render :partial => "inactive_instructors" %>
+    </div>
+
     <%= link_to "Add a new instructor", new_instructor_path %>
-  </div>
 
-  <div class="small-1 columns">
-    &nbsp;
-  </div>
-
-  <div class="small-4 columns">
-    <!-- SIDEBAR CONTENT GOES HERE -->
-    <%= render partial: 'inactive_instructors' %>
   </div>
 </div>

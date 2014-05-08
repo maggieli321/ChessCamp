@@ -1,11 +1,28 @@
-<% unless @inactive_instructors.empty? %>
-  <h3>&nbsp;</h3>
-  <div class="panel clearfix">
-    <h1>Inactive Instructors</h1>
-    <ul class="side-nav">
-      <% @inactive_instructors.each do |instructor| %>
-        <li><%= link_to instructor.name, instructor_path(instructor) %></li>
-      <% end %>
-    </ul>
-  </div>
+<h1>Inctive Instructors</h1>
+<% if @inactive_instructors.size == 0 %>
+  Sorry, there are no instructors to be displayed.
+<% else %>
+  <table class="table">
+    <tr>
+      <th width="200">Name</th>
+      <th width="200">Phone</th>
+      <th width="100">Camps</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @inactive_instructors.each do |instructor| %>
+    <tr>
+      <td><%= link_to instructor.name, instructor_path(instructor) %></td>
+      <td align="center"><%= number_to_phone instructor.phone %></td>
+      <td align="center"><%= instructor.camps.size %></td>
+
+      <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @inactive_instructors, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

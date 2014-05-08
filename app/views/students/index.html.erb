@@ -1,17 +1,20 @@
 <div class="row">
-	    <div class="span12">
+    <div class="span12">
+        <div class="btn-group floatright" data-toggle="buttons-radio">
+            <button type="button" class="student-active-toggle btn btn-info" >Active</button>
+            <button type="button" class="student-inactive-toggle btn btn-info">Inactive</button>
+        </div>
 
-  <div class="small-12 columns">
-    <!-- MAIN CONTENT GOES HERE -->
-    <%= render :partial => "students", locals: { status: "Active", students: @active_students } %>
-    <%= render :partial => "students", locals: { status: "Inactive", students: @inactive_students } %>
-<br />    <%= link_to "Add a new student", new_student_path %>
-  </div>
+        <div class = "active-student nav-tabs">
+            <h3></h3>
+            <%= render :partial => "active_students" %>
+        </div>
 
+        <div class = "inactive-student nav-tabs">
+            <h3></h3>
+            <%= render :partial => "inactive_students" %>
+        </div></br></br>
+            <%= link_to "Add a new student", new_student_path %>
 
-  <div class="small-4 columns">
-    <!-- SIDEBAR CONTENT GOES HERE -->
-    <%= render :partial => "inactive_students" %>
-  </div>
-</div>
+    </div>
 </div>
